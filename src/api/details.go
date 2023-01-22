@@ -21,10 +21,17 @@ func Details(c *gin.Context) {
 				Continent: config.RequestData[i].Continent,
 				Currency:  config.RequestData[i].Currency,
 			})
+			c.JSON(http.StatusOK, gin.H{
+				"error": false,
+				"data":  data,
+			})
+			return
 		}
 	}
+
 	c.JSON(http.StatusOK, gin.H{
 		"error": false,
-		"data":  data,
+		"data":  "Id is not availiable",
 	})
+	
 }

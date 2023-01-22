@@ -8,19 +8,19 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func CountrySort(c *gin.Context) {
+func CurrencySort(c *gin.Context) {
 	var (
-		data    []config.Request
-		country []string
+		data     []config.Request
+		currency []string
 	)
 	for i := 0; i < len(config.RequestData); i++ {
-		country = append(country, config.RequestData[i].Country)
+		currency = append(currency, config.RequestData[i].Currency)
 	}
-	s := Unique(country)
+	s := Unique(currency)
 	sort.Strings(s)
 	for i := 0; i < len(s); i++ {
-		for j := 0; j < len(config.RequestData); j++ {
-			if s[i] == config.RequestData[j].Country {
+		for j := 0; j < len(currency); j++ {
+			if s[i] == config.RequestData[j].Currency {
 				data = append(data, config.Request{
 					Id:        config.RequestData[j].Id,
 					Country:   config.RequestData[j].Country,

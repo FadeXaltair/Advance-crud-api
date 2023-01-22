@@ -22,11 +22,15 @@ func Update(c *gin.Context) {
 				Currency:  body.Currency,
 			}
 			config.RequestData[i] = data
-			break
+			c.JSON(http.StatusOK, gin.H{
+				"error":   false,
+				"message": "updated successfully",
+			})
+			return
 		}
 	}
 	c.JSON(http.StatusOK, gin.H{
-		"error":   false,
-		"message": "updated successfully",
+		"error":   true,
+		"message": "no data updated",
 	})
 }

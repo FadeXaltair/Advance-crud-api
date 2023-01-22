@@ -15,6 +15,15 @@ func Create(c *gin.Context) {
 		log.Println(err)
 		return
 	}
+
+	if body.Id == 0 || body.Country == "" || body.Continent == "" || body.Currency == "" {
+		c.JSON(400, gin.H{
+			"error":   true,
+			"message": "fields are required",
+		})
+		return
+	}
+
 	for i := 0; i < len(config.RequestData); i++ {
 		if config.RequestData[i].Id == body.Id {
 			c.JSON(http.StatusOK, gin.H{
