@@ -10,6 +10,13 @@ import (
 
 func Update(c *gin.Context) {
 	id, _ := c.GetQuery("id")
+	if id == "" {
+		c.JSON(400, gin.H{
+			"error":   true,
+			"message": "empty or mismatch qyery params",
+		})
+		return
+	}
 	var body config.Request
 	c.Bind(&body)
 	dataid, _ := strconv.Atoi(id)

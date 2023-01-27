@@ -11,6 +11,13 @@ import (
 func Sort(c *gin.Context) {
 	firstvalue, _ := c.GetQuery("id-1")
 	secondvalue, _ := c.GetQuery("id-2")
+	if firstvalue == "" || secondvalue == "" {
+		c.JSON(400, gin.H{
+			"error":   true,
+			"message": "mismatch or empty query",
+		})
+		return
+	}
 	Id1, _ := strconv.Atoi(firstvalue)
 	Id2, _ := strconv.Atoi(secondvalue)
 	var data1, data2 []config.Request

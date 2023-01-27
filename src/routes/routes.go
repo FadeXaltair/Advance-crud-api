@@ -13,9 +13,7 @@ func Routes(router *gin.Engine) {
 	router.DELETE("/delete", api.Delete)
 	router.GET("/id-sort", api.Sort)
 	router.GET("/filter", api.Filter)
-	router.GET("/country-sort", api.CountrySort)
-	router.GET("/continent-sort", api.ContinentSort)
-	router.GET("/currency-sort", api.CurrencySort)
+	router.GET("/sort", api.Namesort)
 	router.GET("/details", api.Details)
 	router.Run(":3000")
 }
